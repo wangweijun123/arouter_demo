@@ -40,19 +40,19 @@ public class Test1Interceptor implements IInterceptor {
             ab.setNegativeButton("继续", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    callback.onContinue(postcard);
+                    callback.onContinue(postcard); // 放行
                 }
             });
             ab.setNeutralButton("算了", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    callback.onInterrupt(null);
+                    callback.onInterrupt(null); // 拦截
                 }
             });
             ab.setPositiveButton("加点料", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    postcard.withString("extra", "我是在拦截器中附加的参数");
+                    postcard.withString("extra", "我是在拦截器中附加的参数"); // 修改
                     callback.onContinue(postcard);
                 }
             });
